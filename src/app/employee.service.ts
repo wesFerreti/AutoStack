@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { IEmployee } from './Iemployee';
-import { DepartmentService } from './department.service';
 import { IRole } from './irole';
 import { IDepartment } from './idepartment';
 
@@ -9,7 +8,7 @@ import { IDepartment } from './idepartment';
 })
 export class EmployeeService{
   
-  public employee: IEmployee = {
+  private employee: IEmployee = {
     "name" : 'wesley',
     "lastName":'ferreti',
     "email":'wesley.ferreti@hotmail.com',

@@ -6,6 +6,7 @@
   <input matInput name="s" [(ngModel)]="lastName"  placeholder="Sobrenome">
 </mat-form-field>
 
+
 <mat-form-field class="example-full-width">
     <mat-select  placeholder="Departamento" >
       <mat-option *ngFor="let departamento of departments" (click)="updateRoles(departamento.name)" [value]="departamento.name">

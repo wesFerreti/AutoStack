@@ -3,12 +3,14 @@ import { EmployeeService } from '../employee.service';
 import { DepartmentService } from '../department.service';
 import { IDepartment } from '../idepartment';
 import { IRole } from '../irole';
+
 @Component({
   selector: 'app-form-employee',
   templateUrl: './form-employee.component.html',
   styleUrls: ['./form-employee.component.css']
 })
 export class FormEmployeeComponent implements OnInit {
+
   name:string;
   lastName:string;
   departments: IDepartment[];
@@ -25,16 +27,15 @@ export class FormEmployeeComponent implements OnInit {
     this.departments = this.departmentService.getDepartments();
   }
 
-  updateRoles(selected){
-    console.log(selected);
+  updateRoles(DepartmentSelected){
+    
+    console.log(DepartmentSelected);
     this.departmentSelected=true;
     this.departments.forEach(element => {
-      if (element.name==selected) {
+      if (element.name==DepartmentSelected) {
         this.roles = element.roles
       }
     });
-
-
   }
 
 
