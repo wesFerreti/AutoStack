@@ -1,3 +1,25 @@
-<p>
-  form-employee works! {{name}}
-</p>
+<form class="example-form">
+<mat-form-field class="example-full-width">
+  <input matInput [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="Nome">
+</mat-form-field>
+<mat-form-field class="example-full-width">
+  <input matInput name="s" [(ngModel)]="lastName"  placeholder="Sobrenome">
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+    <mat-select  placeholder="Departamento" >
+      <mat-option *ngFor="let departamento of departments" (click)="updateRoles(departamento.name)" [value]="departamento.name">
+        {{departamento.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<mat-form-field *ngIf="departmentSelected==true" class="example-full-width">
+  <mat-select placeholder="Função">
+    <mat-option *ngFor="let role of roles" [value]="role.name">
+      {{role.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</form>
+<br>

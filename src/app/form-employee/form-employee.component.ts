@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
-
+import { DepartmentService } from '../department.service';
+import { IDepartment } from '../idepartment';
+import { IRole } from '../irole';
 @Component({
   selector: 'app-form-employee',
   templateUrl: './form-employee.component.html',
@@ -8,18 +10,32 @@ import { EmployeeService } from '../employee.service';
 })
 export class FormEmployeeComponent implements OnInit {
   name:string;
+  lastName:string;
+  departments: IDepartment[];
+  roles: IRole[];
+  departmentSelected:boolean = false;
+  constructor(private employeeService: EmployeeService,private departmentService: DepartmentService) { 
 
-  constructor(private employeeService: EmployeeService) { 
-    this.name = ';s';
   }
-   
-
-
-
 
 
   ngOnInit() {
-    this.name = this.employeeService.getEmployee();
+    this.name = this.employeeService.getName();
+    this.lastName = this.employeeService.getLastName();
+    this.departments = this.departmentService.getDepartments();
   }
+
+  updateRoles(selected){
+    console.log(selected);
+    this.departmentSelected=true;
+    this.departments.forEach(element => {
+      if (element.name==selected) {
+        this.roles = element.roles
+      }
+    });
+
+
+  }
+
 
 }
