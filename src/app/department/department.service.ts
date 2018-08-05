@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IDepartment } from './idepartment';
-import { RoleService } from './role.service';
+import { RoleService } from '../role/role.service';
 
 @Injectable({
   providedIn: 'root'

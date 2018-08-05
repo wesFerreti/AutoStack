@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FormEmployeeComponent } from './form-employee/form-employee.component';
-import { EmployeeService } from './employee.service';
+import { EmployeeService } from './employee/employee.service';
 import {MatCheckboxModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';

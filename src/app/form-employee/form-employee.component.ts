@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../employee.service';
-import { DepartmentService } from '../department.service';
-import { IDepartment } from '../idepartment';
-import { IRole } from '../irole';
-import { IEmployee } from '../Iemployee';
-import { RoleService } from '../role.service';
+import { EmployeeService } from '../employee/employee.service';
+import { DepartmentService } from '../department/department.service';
+import { IDepartment } from '../department/idepartment';
+import { IRole } from '../role/irole';
+import { IEmployee } from '../employee/Iemployee';
+import { RoleService } from '../role/role.service';
 
 @Component({
   selector: 'app-form-employee',

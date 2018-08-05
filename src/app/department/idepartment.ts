@@ -1,4 +1,4 @@
-import { IRole } from "./irole";
+import { IRole } from "../role/irole";
 
 export interface IDepartment {
     name: string;
