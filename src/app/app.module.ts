@@ -9,6 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     FormsModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
     
   ],
   providers: [EmployeeService],

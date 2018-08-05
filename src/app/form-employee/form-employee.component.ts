@@ -19,7 +19,8 @@ export class FormEmployeeComponent implements OnInit {
   employeeEmail: string;
   employeeRoleID:number;
   employeeDepartmentID:number;
-  
+  employeeCep;
+  endereco;
   roles: IRole[];
   departments: IDepartment[];
   selectedDepartmentName:string;
@@ -38,16 +39,24 @@ export class FormEmployeeComponent implements OnInit {
     
   }
 
+  getEndereco(){
+
+    this.employeeService.getEndViaCep(this.employeeCep).subscribe(endereco=>{
+      this.endereco = JSON.stringify(endereco);
+      console.log(this.employeeCep);
+      console.log(this.endereco);
+
+    });
+
+  }
   newEmployee(){
     this.employee.name = this.employeeName;
     this.employee.lastName = this.employeeLastName;
     this.employee.email = this.employeeEmail;
     this.employee.departmentID = this.departmentService.getDepartmentIdByName(this.selectedDepartmentName);
     this.employee.roleID = this.roleService.getRoleIdByName(this.selectedRoleName);
-    this.employeeService.postEmployee(this.employee);
+    this.employeeService.postEmployee(this.employee).subscribe();
 
-  }
- 
-
+    }
 
 }

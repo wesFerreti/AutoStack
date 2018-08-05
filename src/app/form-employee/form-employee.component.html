@@ -1,5 +1,14 @@
   <form class="example-form" #employeeForm="ngForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="employeeCep" name="cep" placeholder="cep" (blur)="getEndereco()" required> 
+  </mat-form-field>
+  {{employeeCep}}
+  <br>
+  {{endereco}}
+  <br>
+  <br>
+  <br>
+  <mat-form-field class="example-full-width">
     <input matInput [(ngModel)]="employeeName" name="name" placeholder="Nome" required> 
   </mat-form-field>
   <mat-form-field class="example-full-width">
