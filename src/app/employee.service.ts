@@ -12,42 +12,34 @@ export class EmployeeService{
     "name" : 'wesley',
     "lastName":'ferreti',
     "email":'wesley.ferreti@hotmail.com',
-    "department": {'name':'Engenharia', 'roles':[{'name':'Analista de sistemas'}]},
-    "role":{'name':'Analista de sistemas'}
+    "departmentID": 0,
+    "roleID":0,
+    "id": 0
   };
    
   constructor() {
 
   }
 
-  public getRole():IRole{
-    return this.employee.role;
-  }
-  public getName():string{
-    return this.employee.name;
-  }
-  public getLastName():string{
-    return this.employee.lastName;
-  }
-  public getDepartment():IDepartment{
-    return this.employee.department;
+  public postEmployee(employee: IEmployee){
+    console.log(employee);
+    console.log(JSON.stringify(employee));
   }
 
-  public setEmployeeName(name:string){
-    this.employee.name = name;
+  public updateEmployee(employee: IEmployee){
+
   }
 
-  public setEmployeeLastName(lastName:string){
-    this.employee.lastName = lastName;
-  }
 
-  public setEmployeeEmail(email:string){
-    this.employee.email = email;
-  }
-
-  public getEmployee(){
-    console.log(this.employee);
+  public getDefaultEmployee(){
     console.log(JSON.stringify(this.employee));
+    return this.employee;
+  }
+
+  public getEmployeeByCPF(cpf:number):IEmployee{
+    //http to get employee
+    return this.employee;
+
   }
 
 

@@ -1,26 +1,26 @@
-<form class="example-form">
-<mat-form-field class="example-full-width">
-  <input matInput [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="Nome">
-</mat-form-field>
-<mat-form-field class="example-full-width">
-  <input matInput name="s" [(ngModel)]="lastName"  placeholder="Sobrenome">
-</mat-form-field>
-
-
-<mat-form-field class="example-full-width">
-    <mat-select  placeholder="Departamento" >
-      <mat-option *ngFor="let departamento of departments" (click)="updateRoles(departamento.name)" [value]="departamento.name">
-        {{departamento.name}}
+  <form class="example-form" #employeeForm="ngForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="employeeName" name="name" placeholder="Nome" required> 
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="employeeLastName" name="lastName" placeholder="Sobrenome" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="employeeEmail" name="email" placeholder="E-mail" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+      <mat-select name="departaments" [(ngModel)]="selectedDepartmentName" required placeholder="Departamento" >
+        <mat-option *ngFor="let departament of departments"  (click) = "updateRoles(selectedDepartmentName)" [value]="departament.name">
+          {{departament.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-select name="roles" [(ngModel)]="selectedRoleName" required placeholder="Função">
+      <mat-option *ngFor="let role of roles" [value]="role.name">
+        {{role.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-
-<mat-form-field *ngIf="departmentSelected==true" class="example-full-width">
-  <mat-select placeholder="Função">
-    <mat-option *ngFor="let role of roles" [value]="role.name">
-      {{role.name}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-</form>
-<br>
+  <button mat-flat-button type="submit" color="accent" (click)="newEmployee();employeeForm.reset()" [disabled]="!employeeForm.form.valid">Criar</button>
+  </form>
