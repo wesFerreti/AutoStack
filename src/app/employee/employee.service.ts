@@ -9,6 +9,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class EmployeeService{
 
+  private employeeUrl = 'www.mywebserveice.com/api/products'
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -16,7 +17,6 @@ export class EmployeeService{
     })
   };
 
-  private employeeUrl = 'www.mywebserveice.com/api/products'
   private employee: IEmployee = {
     "name" : 'wesley',
     "lastName":'ferreti',
