@@ -25,12 +25,20 @@ export class FormEmployeeComponent implements OnInit {
   departments: IDepartment[];
   selectedDepartmentName:string;
   selectedRoleName:string;
+  dep;
+
   constructor(private employeeService: EmployeeService,private departmentService: DepartmentService, private roleService: RoleService) { 
 
   }
   ngOnInit() {
     this.departments = this.departmentService.getDepartments();
     this.employee = this.employeeService.getDefaultEmployee();
+    this.departmentService.getDepartmentsHttp().subscribe(blabla=>{
+      this.dep = JSON.stringify(blabla);
+      console.log(this.dep);
+      console.log(this.endereco);
+    });
+    
   }
 
   updateRoles(departmentSelected:string){
