@@ -18,25 +18,23 @@ export class EmployeeService{
   };
 
   private employee: IEmployee = {
-    "name" : 'wesley',
-    "lastName":'ferreti',
-    "email":'wesley.ferreti@hotmail.com',
-    "departmentID": 0,
-    "roleID":0,
-    "id": 0
+    "name" : null,
+    "lastName":null,
+    "email":null,
+    "departmentID": null,
+    "roleID":null,
+    "id": null,
+    "loginID":null,
+    "cpf":null,
+    "addressID":null
   };
    
   constructor(private http: HttpClient) {
 
   }
 
-  public getEndViaCep(cep:number):Observable<string>{
-    console.log(JSON.stringify(this.http.get<string>("https://viacep.com.br/ws/"+cep+"/json/")));
-    return this.http.get<string>("https://viacep.com.br/ws/"+cep+"/json/");
-  }
 
   public postEmployee(employee: IEmployee):Observable<IEmployee>{
-    console.log(employee);
     console.log(JSON.stringify(employee));
     return this.http.post<IEmployee>(this.employeeUrl, employee, this.httpOptions)
   }
@@ -46,18 +44,18 @@ export class EmployeeService{
   }
 
 
-  public getDefaultEmployee(){
+  public getDefaultEmployee():IEmployee{
     console.log(JSON.stringify(this.employee));
     return this.employee;
   }
 
-  public getEmployeeByCPF(cpf:number):IEmployee{
+  public getEmployeeByCPF(cpf:string):IEmployee{
     //http to get employee
     return this.employee;
 
   }
   
-  getAllEmployees(): Observable<IEmployee[]>{
+  public getAllEmployees(): Observable<IEmployee[]>{
     return this.http.get<IEmployee[]>(this.employeeUrl).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)

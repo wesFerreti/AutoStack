@@ -1,0 +1,29 @@
+  <form class="form" #employeeForm="ngForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="full-width">
+      <input matInput [(ngModel)]="address.cep" name="cep" placeholder="cep" (blur)="getAddress()" required> 
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput [(ngModel)]="employee.name" name="name" placeholder="Nome" required> 
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput [(ngModel)]="employee.lastName" name="lastName" placeholder="Sobrenome" required>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput [(ngModel)]="employee.email" name="email" placeholder="E-mail" required>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+      <mat-select name="departaments" [(ngModel)]="selectedDepartmentName" required placeholder="Departamento" >
+        <mat-option *ngFor="let departament of departments"  (click) = "updateRoles(selectedDepartmentName)" [value]="departament.name">
+          {{departament.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-select name="roles" [(ngModel)]="selectedRoleName" required placeholder="Função">
+      <mat-option *ngFor="let role of roles" [value]="role.name">
+        {{role.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-flat-button type="submit" color="accent" (click)="newEmployee();employeeForm.reset()" [disabled]="!employeeForm.form.valid">Criar</button>
+  </form>

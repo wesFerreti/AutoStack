@@ -1,4 +1,3 @@
-
 export interface IEmployee {
     
     name: string;
@@ -6,6 +5,9 @@ export interface IEmployee {
     email: string;
     departmentID: number;
     roleID: number;
-    id?: number;
-    
+    id: number;
+    cpf: string;
+    loginID: number;
+    addressID: number;
+
 }
