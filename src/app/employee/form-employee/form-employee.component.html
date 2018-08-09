@@ -1,16 +1,24 @@
+<mat-grid-list cols="2" rowHeight="10px"> 
   <form class="form" #employeeForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <!--CEP
+    <mat-form-field class="full-width">
+      <input matInput [(ngModel)]="address.postCode" name="postcode" placeholder="Cep" (blur)="getAddress()" required> 
+  </mat-form-field>-->
+
+
   <mat-form-field class="full-width">
-      <input matInput [(ngModel)]="address.cep" name="cep" placeholder="cep" (blur)="getAddress()" required> 
+    <input matInput type="text" [(ngModel)]="employee.name" name="name" placeholder="Nome" required> 
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput [(ngModel)]="employee.name" name="name" placeholder="Nome" required> 
+    <input matInput type="text"  [(ngModel)]="employee.lastName" name="lastName" placeholder="Sobrenome" required>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput [(ngModel)]="employee.lastName" name="lastName" placeholder="Sobrenome" required>
+    <input matInput type="email" [(ngModel)]="employee.email" name="email" placeholder="E-mail" required>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input matInput [(ngModel)]="employee.email" name="email" placeholder="E-mail" required>
-  </mat-form-field>
+      <input matInput type="number" [(ngModel)]="employee.cpf" name="cpf" placeholder="cpf" required>
+    </mat-form-field>
   <mat-form-field class="full-width">
       <mat-select name="departaments" [(ngModel)]="selectedDepartmentName" required placeholder="Departamento" >
         <mat-option *ngFor="let departament of departments"  (click) = "updateRoles(selectedDepartmentName)" [value]="departament.name">
@@ -27,3 +35,4 @@
   </mat-form-field>
   <button mat-flat-button type="submit" color="accent" (click)="newEmployee();employeeForm.reset()" [disabled]="!employeeForm.form.valid">Criar</button>
   </form>
+</mat-grid-list>

@@ -11,13 +11,18 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { FormLoginComponent } from './login/form-login/form-login.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FormEmployeeComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +33,10 @@ import { FormLoginComponent } from './login/form-login/form-login.component';
     FormsModule,
     MatSelectModule,
     MatButtonModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    MatMenuModule,
+    MatGridListModule,
+    MatTabsModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

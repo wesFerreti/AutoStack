@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IDepartment } from './idepartment';
 import { RoleService } from '../role/role.service';
-import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,11 @@ export class DepartmentService {
   getDepartments():IDepartment[]{ 
     this.departments = 
     [{'name':'Engenharia','roles':this.roleService.getRolesEng(),'id':1},
-    {'name':'Administração','roles':this.roleService.getRolesAdm(),'id':2}]; 
-    console.log(JSON.stringify(this.departments));     
+    {'name':'Administração','roles':this.roleService.getRolesAdm(),'id':2}];    
      return this.departments;
   }
 
   getDepartmentsHttp():Observable<string>{
-      console.log(this.http.get<string>("192.168.1.37:50891/api/department"));
       return this.http.get<string>("");
   }
 

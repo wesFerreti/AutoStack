@@ -8,6 +8,7 @@ import { RoleService } from '../../role/role.service';
 import { Iaddress } from '../../address/iaddress';
 import { addressService } from '../../address/address.service';
 
+
 @Component({
   selector: 'app-form-employee',
   templateUrl: './form-employee.component.html',
@@ -17,7 +18,6 @@ export class FormEmployeeComponent implements OnInit {
 
   employee:IEmployee;
   address:Iaddress;
-  endereco;
 
   roles: IRole[];
   departments: IDepartment[];
@@ -33,22 +33,37 @@ export class FormEmployeeComponent implements OnInit {
     this.employee = this.employeeService.getDefaultEmployee();
     this.address = this.addressService.getDefaultAddress();
   }
+  
 
-  updateRoles(departmentSelected:string){
+  updateRoles(){
     this.roles = this.roleService.getRolesByDepartmentName(this.selectedDepartmentName);
+  }
+
+
+  public getAddress(){
+    this.addressService.getAddressByPostCode(this.checkPostCode(this.address.postCode)).subscribe(
+      next=>this.viaCepToAddress(next));
     
   }
 
-  getAddress(){
-    this.addressService.getAddressByPostCode(this.address.postCode).subscribe()
-      console.log(this.endereco);
+  public checkPostCode(pc){
+    return pc
+  }
+
+   public viaCepToAddress(ad){
+      this.address.city = ad.localidade;
+      this.address.street = ad.logradouro;
+      this.address.uf = ad.uf;
+      this.address.block = ad.bairoo;
     }
 
-  newEmployee(){
-    console.log(this.employee);
+
+  public newEmployee(){
+
     this.employee.departmentID = this.departmentService.getDepartmentIdByName(this.selectedDepartmentName);
     this.employee.roleID = this.roleService.getRoleIdByName(this.selectedRoleName);
-    this.employeeService.postEmployee(this.employee).subscribe();
+    this.employeeService.postEmployee(this.employee).subscribe(emp=>console.log(emp));
+    console.log(this.employee);
 
     }
 
