@@ -1,12 +1,11 @@
-<mat-grid-list cols="2" rowHeight="10px"> 
+<mat-grid-list cols="4" rowHeight="100px"> 
   <form class="form" #employeeForm="ngForm" (ngSubmit)="onSubmit()">
 
   <!--CEP
     <mat-form-field class="full-width">
       <input matInput [(ngModel)]="address.postCode" name="postcode" placeholder="Cep" (blur)="getAddress()" required> 
   </mat-form-field>-->
-
-
+  
   <mat-form-field class="full-width">
     <input matInput type="text" [(ngModel)]="employee.name" name="name" placeholder="Nome" required> 
   </mat-form-field>

@@ -15,6 +15,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MenuComponent } from './menu/menu.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -36,7 +37,11 @@ import { MenuComponent } from './menu/menu.component';
     HttpClientModule,
     MatMenuModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    RouterModule.forRoot([
+      {path: 'cadastro', component: FormEmployeeComponent},
+      {path: 'login', component: FormLoginComponent}
+    ])
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
