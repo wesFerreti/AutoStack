@@ -1,8 +1,6 @@
 .form {
-    min-width: 100px;
-    max-width: 1080px;
-    width: 100%;
-    margin: 0 auto;
+    min-width: 10px;
+    max-width: 1000px;
  }
  
 .full-width {
@@ -14,9 +12,8 @@
 }
 
 .card {
-  max-width: 1105px;
-
-
+    min-width: 15px;
+    max-width: 1025px;
 }
 
 
