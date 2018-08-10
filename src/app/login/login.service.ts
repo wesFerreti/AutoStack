@@ -5,11 +5,16 @@ import { Ilogin } from './ilogin';
   providedIn: 'root'
 })
 export class LoginService {
-  login: Ilogin = {name:'wesferret',password:'padrao'};
+  private login: Ilogin = {email:null,password:null};
+
   constructor() { }
 
-  tryToLogin(login:Ilogin){
+  public tryToLogin(login:Ilogin){
       console.log(login);
+  }
+  
+  public getDefaultLogin(){
+    return this.login;
   }
 
   

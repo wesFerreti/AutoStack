@@ -1,0 +1,25 @@
+.form {
+    min-width: 100px;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+ }
+ 
+.full-width {
+    width: 100%;
+}
+
+.middle {
+    margin: 0 auto;
+}
+
+
+.card {
+  max-width: 425px;
+}
+.buttonMiddle{
+    margin: 0 auto;
+    position: relative;
+}
+
+

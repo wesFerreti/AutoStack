@@ -1,3 +1,22 @@
-<p>
-  form-login works!
-</p>
+<mat-card class="card middle">
+    <mat-card-header>
+    <div mat-card-avatar> <i class="material-icons md-36">face</i> </div>
+    <mat-card-title>Bem-vindo!</mat-card-title>
+    <mat-card-subtitle>autoStack</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+  <form class="form" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field color="primary" class="full-width">
+      <input matInput type="email" [(ngModel)]="login.email" name="email" placeholder="email" required>
+    </mat-form-field>
+    {{login.email}}
+    <mat-form-field class="full-width">
+      <input matInput type="password" [(ngModel)]="login.password" name="password" placeholder="Senha" required>
+    </mat-form-field>
+    {{login.password}}
+  </form>
+</mat-card-content>
+  <mat-card-actions>
+      <button mat-stroked-button type="submit" (click)="tryToLogin();loginForm.reset()" [disabled]="!loginForm.form.valid">Log-in</button>
+    </mat-card-actions>
+</mat-card>

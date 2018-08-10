@@ -1,17 +1,15 @@
- 
 <nav mat-tab-nav-bar dynamicHeight>
-  <a mat-tab-link
-     [routerLink]="['/cadastro']"
-     routerLinkActive #cadastro="routerLinkActive"
-     [active]="cadastro.isActive">
+  <a mat-tab-link [routerLink]="['/login']" routerLinkActive #login="routerLinkActive" [active]="login.isActive">
+    <i class="material-icons">account_circle</i>
+    Login
+  </a>
+  <a mat-tab-link [routerLink]="['/cadastro']" routerLinkActive #cadastro="routerLinkActive" [active]="cadastro.isActive">
+    <i class="material-icons">assignment</i>
     Cadastro
-</a>
-  <a mat-tab-link
-  [routerLink]="['/login']"
-  routerLinkActive #login="routerLinkActive"
-  [active]="login.isActive">
- Login
-</a>
-</nav>
+  </a>
 
-<router-outlet></router-outlet>
+</nav>
+<br>
+<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+    <router-outlet #o="outlet"></router-outlet>
+</main>

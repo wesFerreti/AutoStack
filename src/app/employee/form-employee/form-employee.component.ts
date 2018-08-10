@@ -16,16 +16,16 @@ import { addressService } from '../../address/address.service';
 })
 export class FormEmployeeComponent implements OnInit {
 
-  employee:IEmployee;
-  address:Iaddress;
+  employee: IEmployee;
+  address: Iaddress;
 
   roles: IRole[];
   departments: IDepartment[];
 
-  selectedDepartmentName:string;
-  selectedRoleName:string;
+  selectedDepartmentName: string;
+  selectedRoleName: string;
 
-  constructor(private employeeService: EmployeeService,private departmentService: DepartmentService, private roleService: RoleService, private addressService: addressService) { 
+  constructor(private employeeService: EmployeeService, private departmentService: DepartmentService, private roleService: RoleService, private addressService: addressService) {
 
   }
   ngOnInit() {
@@ -33,38 +33,38 @@ export class FormEmployeeComponent implements OnInit {
     this.employee = this.employeeService.getDefaultEmployee();
     this.address = this.addressService.getDefaultAddress();
   }
-  
 
-  updateRoles(){
+
+  updateRoles() {
     this.roles = this.roleService.getRolesByDepartmentName(this.selectedDepartmentName);
   }
 
 
-  public getAddress(){
+  public getAddress() {
     this.addressService.getAddressByPostCode(this.checkPostCode(this.address.postCode)).subscribe(
-      next=>this.viaCepToAddress(next));
-    
+      next => this.viaCepToAddress(next));
+
   }
 
-  public checkPostCode(pc){
+  public checkPostCode(pc) {
     return pc
   }
 
-   public viaCepToAddress(ad){
-      this.address.city = ad.localidade;
-      this.address.street = ad.logradouro;
-      this.address.uf = ad.uf;
-      this.address.block = ad.bairoo;
-    }
+  public viaCepToAddress(ad) {
+    this.address.city = ad.localidade;
+    this.address.street = ad.logradouro;
+    this.address.uf = ad.uf;
+    this.address.block = ad.bairoo;
+  }
 
 
-  public newEmployee(){
-
+  public newEmployee() {
+    console.log(this.employee);
     this.employee.departmentID = this.departmentService.getDepartmentIdByName(this.selectedDepartmentName);
     this.employee.roleID = this.roleService.getRoleIdByName(this.selectedRoleName);
-    this.employeeService.postEmployee(this.employee).subscribe(emp=>console.log(emp));
+    this.employeeService.postEmployee(this.employee).subscribe(emp => console.log(emp));
     console.log(this.employee);
 
-    }
+  }
 
 }
