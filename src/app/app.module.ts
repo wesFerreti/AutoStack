@@ -18,6 +18,7 @@ import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { GlobalActivePowerChartComponent } from './global-active-power-chart/global-active-power-chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -43,6 +44,7 @@ import { GlobalActivePowerChartComponent } from './global-active-power-chart/glo
     MatGridListModule,
     MatTabsModule,
     MatCardModule,
+    ChartsModule,
     RouterModule.forRoot([
       { path: 'cadastro', component: FormEmployeeComponent },
       { path: 'login', component: FormLoginComponent },
