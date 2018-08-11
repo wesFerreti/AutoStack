@@ -1,8 +1,31 @@
-<div style="display: block">
-  <canvas baseChart
-              [data]="doughnutChartData"
-              [labels]="doughnutChartLabels"
-              [chartType]="doughnutChartType"
-              (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)"></canvas>
-</div>
+
+<mat-grid-list [cols]="breakpoint"  [rowHeight]="rowHeights" (window:resize)="onResize($event)">
+    <mat-grid-tile [colspan]="breakpoint" rowspan="1">
+<mat-card class="chart-container">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <i class="material-icons md-36">pie_chart</i>
+    </div>
+    <mat-card-title>Potência ativa total</mat-card-title>
+    <mat-card-subtitle>Ativos ômega</mat-card-subtitle>
+    {{rowHeights}}
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <canvas baseChart 
+        [data]="doughnutChartData" 
+        [colors]="chartColors" 
+        [labels]="doughnutChartLabels" 
+        [chartType]="doughnutChartType"
+        (chartHover)="chartHovered($event)" 
+        (chartClick)="chartClicked($event)">
+    </canvas>
+    </div>
+
+  </mat-card-content>
+
+</mat-card>
+</mat-grid-tile>
+</mat-grid-list>
+
+<br>
