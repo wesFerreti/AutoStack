@@ -17,6 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { GlobalActivePowerChartComponent } from './global-active-power-chart/global-active-power-chart.component';
 
 
 
@@ -25,7 +26,8 @@ import { MatCardModule } from '@angular/material/card';
     AppComponent,
     FormEmployeeComponent,
     FormLoginComponent,
-    MenuComponent
+    MenuComponent,
+    GlobalActivePowerChartComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { MatCardModule } from '@angular/material/card';
     RouterModule.forRoot([
       { path: 'cadastro', component: FormEmployeeComponent },
       { path: 'login', component: FormLoginComponent },
-      { path: '', component: FormLoginComponent}
+      { path: 'home', component: GlobalActivePowerChartComponent },
+      { path: '', component: FormLoginComponent }
     ])
   ],
   providers: [EmployeeService],

@@ -7,6 +7,10 @@
     <i class="material-icons">assignment</i>
     Cadastro
   </a>
+  <a mat-tab-link [routerLink]="['/home']" routerLinkActive #home="routerLinkActive" [active]="home.isActive">
+    <i class="material-icons">home</i>
+    Inicio
+  </a>
 
 </nav>
 <br>
