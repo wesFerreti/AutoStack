@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResizableService } from '../resizable/resizable.service';
+import { ChartPluginsService } from '../plugins/chart-plugins.service';
 
 @Component({
   selector: 'app-global-energy-delivered',
@@ -8,8 +9,8 @@ import { ResizableService } from '../resizable/resizable.service';
 })
 export class GlobalEnergyDeliveredComponent implements OnInit {
   public resizableWidth: string = "100%";
-  public totalEnergyDeliveredAnually: number = 5000;
-  public anualGoal: number = 10000;
+  public totalEnergyDeliveredAnually: number = 30000;
+  public anualGoal: number = 50000;
 
   public horizontalBarChartLabels: string[];
   public horizontalBarChartData: number[];
@@ -17,15 +18,17 @@ export class GlobalEnergyDeliveredComponent implements OnInit {
   public horizontalBarChartOptions: any;
   public horizontalBarChartColors: any[];
   
-  constructor(private resizableService: ResizableService) { }
+  constructor(private resizableService: ResizableService, private chartPluginService: ChartPluginsService) { }
 
   ngOnInit() {
+    //this.chartPluginService.showValuesOnBars();
     this.horizontalBarChartColors = [{ backgroundColor: ["#b99dea", "#9e79e0"] }];
     this.horizontalBarChartLabels = ['Energia', 'Meta'];
     this.horizontalBarChartData = [this.totalEnergyDeliveredAnually, this.anualGoal, 0, 50000];
     this.resizableService.getWindowSizeAndUpdateProperties(window.innerWidth);
     this.resizableWidth = this.resizableService.getResizableWidth();
     this.updateChartOptions();
+
   }
 
   onResize($event) {
@@ -37,6 +40,7 @@ export class GlobalEnergyDeliveredComponent implements OnInit {
 
   public updateChartOptions() {
     this.horizontalBarChartOptions = {
+      showDatapoints: true,
       responsive: true,
       scales: {
         yAxes: [
@@ -60,7 +64,7 @@ export class GlobalEnergyDeliveredComponent implements OnInit {
         display: false,
         position: 'right',
         labels: {
-          fontSize: this.resizableService.getResizableLegendSize,
+          fontSize: this.resizableService.getResizableLegendSize(),
           padding: 30
         }
       },
@@ -73,12 +77,12 @@ export class GlobalEnergyDeliveredComponent implements OnInit {
         callbacks: {
           // use label callback to return the desired label
           label: function (tooltipItem, data) {
-            return tooltipItem.xLabel + " :" + tooltipItem.yLabel;
+            return tooltipItem.xLabel + " GW/h";
           },
           // remove title
-          title: function (tooltipItem, data) {
-            return;
-          }
+          //title: function (tooltipItem, data) {
+          //  return;
+          //}
         }
       }
     }
