@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IEmployee } from './Iemployee';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable, } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'

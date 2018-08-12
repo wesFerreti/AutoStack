@@ -1,31 +1,35 @@
 
-<mat-grid-list [cols]="breakpoint"  [rowHeight]="rowHeights" (window:resize)="onResize($event)">
-    <mat-grid-tile [colspan]="breakpoint" rowspan="1">
-<mat-card class="chart-container">
+<mat-card tabindex="0" class="chart-container" [style.width]="resizableWidth" (window:resize)="onResize($event)">
   <mat-card-header>
     <div mat-card-avatar>
       <i class="material-icons md-36">pie_chart</i>
     </div>
     <mat-card-title>Potência ativa total</mat-card-title>
     <mat-card-subtitle>Ativos ômega</mat-card-subtitle>
-    {{rowHeights}}
+    
   </mat-card-header>
+  <div class="DiviMargin">
+      <mat-divider [inset]="true"></mat-divider>
+      <br>
+  </div>
+  
   <mat-card-content>
-    <div>
-      <canvas baseChart 
-        [data]="doughnutChartData" 
-        [colors]="chartColors" 
-        [labels]="doughnutChartLabels" 
-        [chartType]="doughnutChartType"
-        (chartHover)="chartHovered($event)" 
-        (chartClick)="chartClicked($event)">
-    </canvas>
-    </div>
-
+      <canvas baseChart [data]="doughnutChartData" [colors]="chartColors" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+        [options]="dougnutChartOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+      </canvas>
   </mat-card-content>
-
+  <mat-card-footer >
+    <div class="DiviMargin">
+      <mat-list>
+          <mat-list-item><h3 class="eolicaPrimaryColor">Potência ativa Eólicas:</h3>134.54MW</mat-list-item>
+          <mat-divider [inset]="true"></mat-divider>
+          <mat-list-item><h3 class="pchPrimaryColor">Potência ativa PCHs:</h3>134.54MW</mat-list-item>
+          <mat-divider [inset]="true"></mat-divider>
+          <mat-list-item><h3 class="solarPrimaryColor">Potência ativa Solar:</h3>134.54MW</mat-list-item>
+        </mat-list>
+      </div>
+  </mat-card-footer>
 </mat-card>
-</mat-grid-tile>
-</mat-grid-list>
 
-<br>
+
+

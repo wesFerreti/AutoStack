@@ -19,8 +19,13 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { GlobalActivePowerChartComponent } from './global-active-power-chart/global-active-power-chart.component';
 import { ChartsModule } from 'ng2-charts';
-
-
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import { GlobalEnergyDeliveredComponent } from './global-energy-delivered/global-energy-delivered.component';
+import { GlobalInformationComponent } from './global-information/global-information.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,9 @@ import { ChartsModule } from 'ng2-charts';
     FormEmployeeComponent,
     FormLoginComponent,
     MenuComponent,
-    GlobalActivePowerChartComponent
+    GlobalActivePowerChartComponent,
+    GlobalEnergyDeliveredComponent,
+    GlobalInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +52,15 @@ import { ChartsModule } from 'ng2-charts';
     MatTabsModule,
     MatCardModule,
     ChartsModule,
+    MatDividerModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
     RouterModule.forRoot([
       { path: 'cadastro', component: FormEmployeeComponent },
       { path: 'login', component: FormLoginComponent },
-      { path: 'home', component: GlobalActivePowerChartComponent },
+      { path: 'home', component: GlobalInformationComponent },
       { path: '', component: FormLoginComponent }
     ])
   ],
